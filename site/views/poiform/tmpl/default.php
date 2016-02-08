@@ -64,7 +64,12 @@ if(!$canState && $this->item->id > 0) {
 	$this->form->setFieldAttribute( 'catid', 'readonly', 'true' );
 }
 ?>
+<style>
+	select {
+		height:7em;
+	}
 
+</style>
 <script type="text/javascript">
         jQuery(document).ready(function() {
             jQuery('.citybrandingid').css('display','none');
@@ -116,38 +121,27 @@ if(!$canState && $this->item->id > 0) {
 		<div class="controls"><?php echo $this->form->getInput('id'); ?></div>
 	</div>	
 
-	<?php if (!empty($this->item->id)): /*existing*/?> 
-	<div class="control-group">
-		<div class="control-label"><?php echo $this->form->getLabel('regnum'); ?></div>
-		<div class="controls"><?php echo $this->form->getInput('regnum'); ?></div>
-	</div>
-	<div class="control-group">
-		<div class="control-label"><?php echo $this->form->getLabel('regdate'); ?></div>
-		<div class="controls"><?php echo $this->form->getInput('regdate'); ?></div>
-	</div>	
-	
-	<div class="control-group">
-		<div class="control-label"><?php echo $this->form->getLabel('stepid'); ?></div>
-		<div class="controls"><?php echo $this->form->getInput('stepid'); ?></div>
-		<?php foreach((array)$this->item->stepid as $value): ?>
-			<?php if(!is_array($value)): ?>
-				<input type="hidden" class="stepid" name="jform[stepidhidden][<?php echo $value; ?>]" value="<?php echo $value; ?>" />
-			<?php endif; ?>
-		<?php endforeach; ?>
-	</div>
-	<?php else : /*new*/?>
-		<input type="hidden" name="jform[stepid]" value="<?php echo $default_stepId; ?>" />
-		<input type="hidden" class="stepid" name="jform[stepidhidden][<?php echo $default_stepId; ?>]" value="<?php echo $default_stepId; ?>" />
-	<?php endif; ?>
-
 	<div class="control-group">
 		<div class="control-label"><?php echo $this->form->getLabel('catid'); ?></div>
 		<div class="controls"><?php echo $this->form->getInput('catid'); ?></div>
 	</div>
 	<div class="control-group">
+		<div class="control-label"><?php echo $this->form->getLabel('classifications'); ?></div>
+		<div class="controls"><?php echo $this->form->getInput('classifications'); ?></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><?php echo $this->form->getLabel('related'); ?></div>
+		<div class="controls"><?php echo $this->form->getInput('related'); ?></div>
+	</div>
+	<div class="control-group">
 		<div class="control-label"><?php echo $this->form->getLabel('description'); ?></div>
 		<div class="controls"><?php echo $this->form->getInput('description'); ?></div>
 	</div>
+
+		<div class="cb-files control-group">
+			<div class="control-label"><?php echo $this->form->getLabel('photo'); ?></div>
+			<div class="controls"><?php echo $this->form->getInput('photo'); ?></div>
+		</div>
 	<div class="control-group">
 		<div class="control-label"><?php echo $this->form->getLabel('address'); ?></div>
 		<div class="controls"><?php echo $this->form->getInput('address'); ?></div>
@@ -169,7 +163,6 @@ if(!$canState && $this->item->id > 0) {
 
 
 
-
 <!--	    <div class="control-group">
 		    <div class="control-label"><?php /*echo $this->form->getLabel('related'); */?></div>
 		    <div class="controls"><?php /*echo $this->form->getInput('related'); */?></div>
@@ -180,10 +173,7 @@ if(!$canState && $this->item->id > 0) {
 		    <div class="controls"><?php /*echo $this->form->getInput('classifications'); */?></div>
 	    </div>
 -->
-	<div class="cb-files control-group">
-		<div class="control-label"><?php echo $this->form->getLabel('photo'); ?></div>
-		<div class="controls"><?php echo $this->form->getInput('photo'); ?></div>
-	</div>
+
 
 	<div class="control-group citybrandingaccess">
 		<div class="control-label"><?php echo $this->form->getLabel('access'); ?></div>
@@ -249,7 +239,7 @@ if(!$canState && $this->item->id > 0) {
 	    </script>
 	<?php endif; ?>
 
-	<div style="float:right;">
+	<div style="float:right;margin-bottom: 5em;">
 		<a class="button2" href="guide" title="<?php echo JText::_('JCANCEL'); ?>"><?php echo JText::_('JCANCEL'); ?></a>
 		<button type="submit" class="validate button special"><i class="fa fa-check-circle"></i> <?php echo JText::_('JSUBMIT'); ?></button>
 	</div>

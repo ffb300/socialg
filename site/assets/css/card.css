@@ -71,7 +71,7 @@ span.lead a {text-decoration: none; border-bottom: none;}
 /* scale and crop image to same height */
 .crop-height {
   /* max-width: 1200px; /* native or declared width of img src (if known) */
-  height: 220px;
+  height: 150px;
   /*max-height: 200px;*/
   overflow: hidden;
   background-color: #fff;

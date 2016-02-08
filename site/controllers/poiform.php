@@ -129,9 +129,12 @@ class CitybrandingControllerPoiForm extends CitybrandingController {
 
         // Redirect to the list screen.
         $this->setMessage(JText::_('COM_CITYBRANDING_ITEM_SAVED_SUCCESSFULLY'));
+        //$menu = JFactory::getApplication()->getMenu();
+        //$item = $menu->getActive();
+        //$url = (empty($item->link) ? 'index.php?option=com_citybranding&view=pois' : $item->link);
         $menu = JFactory::getApplication()->getMenu();
-        $item = $menu->getActive();
-        $url = (empty($item->link) ? 'index.php?option=com_citybranding&view=pois' : $item->link);
+        $item = $menu->getItems(array('link', 'language'), array('index.php?option=com_citybranding&view=pois', JFactory::getLanguage()->getTag()) , true);
+        $url = 'index.php?option=com_citybranding&view=pois&Itemid='.$item->id;
         $this->setRedirect(JRoute::_($url, false));
 
         // Flush the data from the session.

@@ -71,9 +71,9 @@ $canDelete = $user->authorise('core.delete', 'com_citybranding');
                 
             <div class="grid-item">
                 <div id="citybranding-panel-<?php echo $item->id;?>" class="citybranding-panel">
-                    <?php /* if (JFactory::getUser()->id == $item->created_by) : ?>
+                    <?php  if (JFactory::getUser()->id == $item->created_by) : ?>
                       <div class="ribbon-wrapper-corner"><div class="ribbon-corner"><?php echo JText::_('COM_CITYBRANDING_POIS_MY_POI');?></div></div>
-                    <?php endif; */
+                    <?php endif;
                     ?>
 
                     <?php //get photo if any

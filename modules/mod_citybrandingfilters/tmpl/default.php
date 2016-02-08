@@ -165,12 +165,12 @@ $id = $jinput->get('id', null);
 					</div>
 				</div>
 
-<!--				<?php /*if (JFactory::getUser()->id > 0) : */?>
+				<?php if (JFactory::getUser()->id > 0) : ?>
 					<br />
 					<input type="hidden" id="filter_owned_hidden" name="filter_owned" value="no" />
-					<input type="checkbox" id="filter_owned" name="filter_owned" value="yes" <?php /*echo ($owned == 'yes' ? 'checked="checked"' : ''); */?> />
-					<label for="filter_owned"><?php /*echo JText::_('MOD_CITYBRANDINGFILTERS_SHOW_MINE');*/?></label>
-				--><?php /*endif; */?>
+					<input type="checkbox" id="filter_owned" name="filter_owned" value="yes" <?php echo ($owned == 'yes' ? 'checked="checked"' : ''); ?> />
+					<label for="filter_owned"><?php echo JText::_('MOD_CITYBRANDINGFILTERS_SHOW_MINE');?></label>
+				<?php endif; ?>
 				<hr />
 				<h4>
 					<input type="checkbox" checked="checked" id="selectAllCategories">

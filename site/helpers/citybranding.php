@@ -473,6 +473,19 @@ class CitybrandingFrontendHelper
 		return $db->loadResult();
 	}
 
+	public static function getClassificationNameById($id) {
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true);
+
+		$query
+			->select('a.title')
+			->from('#__citybranding_classifications AS a')
+			->where('a.id = ' . intval($id));
+
+		$db->setQuery($query);
+		return $db->loadResult();
+	}
+
 	public static function getAreaById($id) {
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
@@ -580,5 +593,19 @@ class CitybrandingFrontendHelper
 		}
 
 		return $category_image;
+	}
+
+
+	public static function getRelatedPois($related) {
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true);
+
+		$query
+			->select('id,catid,address,latitude,longitude,moderation,photo,classifications,title')
+			->from('#__citybranding_pois')
+			->where('id IN (' . $related . ')');
+
+		$db->setQuery($query);
+		return $db->loadAssocList();
 	}
 }

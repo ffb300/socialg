@@ -34,11 +34,16 @@ class CitybrandingViewPoi extends JViewLegacy {
         $this->state = $this->get('State');
         $this->item = $this->get('Data');
         $this->params = $app->getParams('com_citybranding');
-        $this->relativeBrands = CitybrandingFrontendHelper::getRelativeBrands($this->item->latitude, $this->item->longitude, $this->params->get('radiusMeters') * 0.000621371192);
+        //$this->relativeBrands = CitybrandingFrontendHelper::getRelativeBrands($this->item->latitude, $this->item->longitude, $this->params->get('radiusMeters') * 0.000621371192);
         //add global brands
-        $globalBrands = CitybrandingFrontendHelper::getGlobalBrands();
-        $this->relativeBrands = array_merge($this->relativeBrands, $globalBrands);
-
+        //$globalBrands = CitybrandingFrontendHelper::getGlobalBrands();
+        //$this->relativeBrands = array_merge($this->relativeBrands, $globalBrands);
+        if($this->item->related != '') {
+            $this->relativeBrands = CitybrandingFrontendHelper::getRelatedPois($this->item->related);
+        }
+        else {
+            $this->item->related = array();
+        }
         if (!empty($this->item)) {
             ///$this->form = $this->get('Form');
 

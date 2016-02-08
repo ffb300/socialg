@@ -17,6 +17,18 @@
             menu_published="0"
             filter="string" />
 
+        <field name="related" type="sql" label="COM_CITYBRANDING_TITLE_RELATED_POIS" query="SELECT id, title AS value FROM #__citybranding_pois ORDER BY ordering" key_field="id" value_field="value" multiple="true" class="inputbox span12 small" required="false" />
+
+        <field name="classifications" type="sql" label="COM_CITYBRANDING_TITLE_CLASSIFICATION" query="SELECT id, title AS value FROM #__citybranding_classifications ORDER BY ordering" key_field="id" value_field="value" multiple="true" class="inputbox span12 small" required="false" />
+
+        <field name="catid"
+               type="category"
+               label="COM_CITYBRANDING_FORM_LBL_POI_CATID"
+               description="COM_CITYBRANDING_FORM_DESC_POI_CATID"
+               required="false"
+               extension="com_citybranding"
+
+        />
         <field name="description" type="textarea"
             label="COM_CITYBRANDING_FORM_LBL_POI_DESCRIPTION"
             description="COM_CITYBRANDING_FORM_DESC_POI_DESCRIPTION" 
@@ -33,7 +45,7 @@
             required="true" 
             filter="safehtml"
             width="100%"
-            height="300px" />
+            height="250px" />
 
         <field name="poitype" type="hidden"
                label="COM_CITYBRANDING_FORM_LBL_POI_TYPE"

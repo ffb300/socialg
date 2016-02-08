@@ -95,15 +95,22 @@ foreach ($attachments->files as $attachment) {
 <?php return; endif; ?>
 
 <?php if($canEdit /*&& $this->item->checked_out == 0*/ && $canEditOnStatus && $this->item->poitype == 1): ?>
-	<a class="button special" href="<?php echo JRoute::_('index.php?option=com_citybranding&task=poi.edit&id='.$this->item->id); ?>"><i class="fa fa-pencil"></i> <?php echo JText::_("COM_CITYBRANDING_EDIT_ITEM"); ?> your brand</a>
+	<a class="button special" href="<?php echo JRoute::_('index.php?option=com_citybranding&task=poi.edit&id='.$this->item->id); ?>"><i class="fa fa-pencil"></i> <?php echo JText::_("COM_CITYBRANDING_EDIT_ITEM"); ?> your SES</a>
 <?php endif; ?>
 
 <header class="citybranding-poi-title">
 	<h4><?php echo $this->item->title; ?></h4>
 	<p><span class="icon cb-location"></span> <?php echo $this->item->address;?><br />
-		<span class="icon cb-pushpin"></span> <?php echo $this->item->catid_title; ?>
-	</p>
+		<span class="cb-cat"><?php echo $this->item->catid_title; ?></span>
+	<br />
+		<h5>Our S.E.S. supports:</h5>
+		<?php $classifications = $this->item->classifications;?>
 
+		<?php $classifications = explode(',',$classifications);?>
+		<?php foreach ($classifications as $catid) : ?>
+			<span class="cb-tag"><?php echo CitybrandingFrontendHelper::getClassificationNameById($catid); ?></span>
+		<?php endforeach; ?>
+	</p>
 </header>
 
 <?php /*if(!empty($attachments->files)) : ?>
@@ -180,7 +187,7 @@ $src = $dom.$pan.$arg.$preview;
 <p><?php echo $this->item->description; ?></p>
 
 
-<h4>Brands close to the <?php echo $this->item->title;?> (up to <?php echo $params->get('radiusMeters'); ?> meters)</h4>
+<h4>Related S.E.S.</h4>
 <?php
 	$relativeBrands = $this->relativeBrands;
 ?>
@@ -205,7 +212,7 @@ $src = $dom.$pan.$arg.$preview;
 					foreach ($attachments->files as $file) {
 						if (isset($file->thumbnailUrl)){
 							$img['src']  = $attachments->imagedir .'/'. $attachments->id . '/medium/' . ($attachments->files[$i]->name);
-							$img['link'] = JRoute::_('index.php?option=com_citybranding&view=brand&id='.(int) $rBrand['id']);
+							$img['link'] = JRoute::_('index.php?option=com_citybranding&view=poi&id='.(int) $rBrand['id']);
 							break; //on first photo break
 						}
 						$i++;
@@ -221,9 +228,9 @@ $src = $dom.$pan.$arg.$preview;
 				<?php endif; ?>
 
 				<div class="cb-category-icon">
-					<?php $rBrand['areaid'] = explode(',',$rBrand['areaid']);?>
-					<?php foreach ($rBrand['areaid'] as $areaid) : ?>
-						<span class="cb-cat"><?php echo CitybrandingFrontendHelper::getAreaById($areaid); ?></span>
+					<?php $rBrand['catid'] = explode(',',$rBrand['catid']);?>
+					<?php foreach ($rBrand['catid'] as $catid) : ?>
+						<span class="cb-cat"><?php echo CitybrandingFrontendHelper::getCategoryNameByCategoryId($catid); ?></span>
 					<?php endforeach; ?>
 				</div>
 
@@ -234,23 +241,19 @@ $src = $dom.$pan.$arg.$preview;
 							<a href="<?php echo JRoute::_('index.php?option=com_citybranding&task=poi.edit&id='.(int) $rBrand['id']); ?>">
 								<i class="icon-edit"></i> <?php echo $this->escape($rBrand['title']); ?></a>
 						<?php else : ?>
-							<h5><a href="<?php echo JRoute::_('index.php?option=com_citybranding&view=brand&id='.(int) $rBrand['id']); ?>">
+							<h5 style="color: black;"><a href="<?php echo JRoute::_('index.php?option=com_citybranding&view=poi&id='.(int) $rBrand['id']); ?>">
 								<?php echo $this->escape($rBrand['title']); ?>
 							</a></h5>
 						<?php endif; ?>
 
-						<?php if ($rBrand['is_global']) :?>
-							<span class="cb-cat">Global Brand</span>
-						<?php else : ?>
-							<a href="<?php echo JRoute::_('index.php?option=com_citybranding&view=brand&id='.(int) $rBrand['id']);?>">
-								(<i class="fa fa-tachometer"></i> <?php echo round($rBrand['distance']*1609.344) ;?> meters)
+<!--							<a href="<?php /*echo JRoute::_('index.php?option=com_citybranding&view=brand&id='.(int) $rBrand['id']);*/?>">
+								(<i class="fa fa-tachometer"></i> <?php /*echo round($rBrand['distance']*1609.344) ;*/?> meters)
 							</a>
-						<?php endif; ?>
-
+-->
 					</span>
-					<?php foreach ($rBrand['tags'] as $tag) : ?>
-						<span class="cb-tag"><?php echo $tag;?></span>
-					<?php endforeach; ?>
+<!--					<?php /*foreach ($rBrand['tags'] as $tag) : */?>
+						<span class="cb-tag"><?php /*echo $tag;*/?></span>
+					--><?php /*endforeach; */?>
 
 				</div>
 
@@ -262,7 +265,7 @@ $src = $dom.$pan.$arg.$preview;
 	</div> <!-- grid2 -->
 
 <?php else : ?>
-	<div class="alert alert-info"><h5 style="text-align: center;">None yet. Help populate the catalog by adding your brand!!</h5></div>
+	<div class="alert alert-info"><h5 style="color: black; text-align: center;">No relative S.E.S. yet</h5></div>
 <?php endif; ?>
 
 
