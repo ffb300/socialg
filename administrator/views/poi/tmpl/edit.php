@@ -129,6 +129,35 @@ $document->addStyleSheet('components/com_citybranding/assets/css/citybranding.cs
 	    </div>
 	    <?php echo JHtml::_('bootstrap.endTab'); ?>
 
+		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('Details about SES', true)); ?>
+		<div class="span12">
+			<div class="control-group">
+				<div class="control-label"><?php echo $this->form->getLabel('logo'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('logo'); ?></div>
+			</div>
+			<div class="control-group">
+				<div class="control-label"><?php echo $this->form->getLabel('contact'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('contact'); ?></div>
+			</div>
+			<div class="control-group">
+				<div class="control-label"><?php echo $this->form->getLabel('target'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('target'); ?></div>
+			</div>
+			<div class="control-group">
+				<div class="control-label"><?php echo $this->form->getLabel('equipment'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('equipment'); ?></div>
+			</div>
+			<div class="control-group">
+				<div class="control-label"><?php echo $this->form->getLabel('jobs'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('jobs'); ?></div>
+			</div>
+			<div class="control-group">
+				<div class="control-label"><?php echo $this->form->getLabel('partnership'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('partnership'); ?></div>
+			</div>
+		</div>
+		<?php echo JHtml::_('bootstrap.endTab'); ?>
+
         <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'publishing', JText::_('JGLOBAL_FIELDSET_PUBLISHING', true)); ?>
             <div class="span6">
                 <fieldset class="adminform">

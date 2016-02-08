@@ -33,6 +33,12 @@ CREATE TABLE IF NOT EXISTS `#__citybranding_pois` (
 `votes` MEDIUMINT(8)  NOT NULL ,
 `modality` SMALLINT(6)  NOT NULL ,
 `subgroup` VARCHAR(255)  NOT NULL ,
+`logo` TEXT  NOT NULL ,
+`contact` TEXT  NOT NULL ,
+`target` TEXT  NOT NULL ,
+`equipment` TEXT  NOT NULL ,
+`jobs` TEXT  NOT NULL ,
+`partnership` TEXT  NOT NULL ,
 PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8_general_ci;
 

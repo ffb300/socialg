@@ -99,6 +99,13 @@ foreach ($attachments->files as $attachment) {
 <?php endif; ?>
 
 <header class="citybranding-poi-title">
+	<?php if($this->item->logo != '') : ?>
+		<div class="image fit" style="width:120px;float:right;text-align:right;">
+			<img src="<?php echo $this->item->logo; ?>" alt="logo" />
+			<br />
+			<span style="font-size: 0.4em">Logo</span>
+		</div>
+	<?php endif; ?>
 	<h4><?php echo $this->item->title; ?></h4>
 	<p><span class="icon cb-location"></span> <?php echo $this->item->address;?><br />
 		<span class="cb-cat"><?php echo $this->item->catid_title; ?></span>
@@ -268,7 +275,29 @@ $src = $dom.$pan.$arg.$preview;
 	<div class="alert alert-info"><h5 style="color: black; text-align: center;">No relative S.E.S. yet</h5></div>
 <?php endif; ?>
 
+<?php if($this->item->target != '') : ?>
+<h4>Target Customers (Market Segment)</h4>
+<p><?php echo $this->item->target;?></p>
+<?php endif; ?>
 
+<?php if($this->item->jobs != '') : ?>
+<h4>Jobs available</h4>
+<p><?php echo $this->item->jobs;?></p>
+<?php endif; ?>
 
+<?php if($this->item->equipment != '') : ?>
+	<h4>Jobs available</h4>
+	<p><?php echo $this->item->equipment;?></p>
+<?php endif; ?>
+
+<?php if($this->item->partnership != '') : ?>
+	<h4>Jobs available</h4>
+	<p><?php echo $this->item->partnership;?></p>
+<?php endif; ?>
+
+<?php if($this->item->contact != '') : ?>
+<h4>Contact Details</h4>
+<div class="alert alert-info"><h5 style="color: black; text-align: center;"><?php echo $this->item->contact;?></h5></div>
+<?php endif; ?>
 
 <div style="height: 10em;"></div>

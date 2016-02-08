@@ -37,6 +37,29 @@
             class="full-width"
             filter="safehtml" />
 
+        <field name="contact" type="editor"
+               label="Contact"
+               description="website, email, phone, etc" />
+
+        <field name="target" type="editor"
+               label="Target Customers"
+               description="Market Segment" />
+
+        <field name="equipment" type="editor"
+               label="Equipment"
+               description="Facilities" />
+
+        <field name="jobs" type="editor"
+               label="Jobs"
+               description="Team Job positions, Job opportunities" />
+
+        <field name="partnership" type="editor"
+               label="Partnerships"
+               description="Partners worth noted" />
+
+        <field name="logo" type="media" directory=""
+               label="Logo" description="Your SES Logo"/>
+
         <field name="address" type="gmap" 
             label="COM_CITYBRANDING_FORM_LBL_POI_ADDRESS" 
             latitudefield="latitude" 

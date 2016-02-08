@@ -24,28 +24,49 @@
         <field name="classifications" type="sql" label="COM_CITYBRANDING_TITLE_CLASSIFICATION" query="SELECT id, title AS value FROM #__citybranding_classifications ORDER BY ordering" key_field="id" value_field="value" multiple="true" class="inputbox span12 small" required="false" />
 
 
+        <field name="contact" type="editor"
+               label="Contact" filter="safehtml"
+               description="website, email, phone, etc" />
+
+        <field name="target" type="editor"
+               label="Target Customers" filter="safehtml"
+               description="Market Segment" />
+
+        <field name="equipment" type="editor"
+               label="Equipment" filter="safehtml"
+               description="Facilities" />
+
+        <field name="jobs" type="editor"
+               label="Jobs" filter="safehtml"
+               description="Team Job positions, Job opportunities" />
+
+        <field name="partnership" type="editor"
+               label="Partnerships" filter="safehtml"
+               description="Partners worth noted" />
+
+        <field name="logo" type="media" directory=""
+               label="Logo" description="Your SES Logo"/>
+
         <field name="panorama" type="repeatable" icon="list"
-               label="Panorama" description=""
+               label="Products" description=""
                default=""
                maximum="99">
             <fieldset hidden="true" repeat="true">
                 <field name="pano_title" type="text"
-                       label="Title" description="Appears on bottom layer" />
+                       label="Title" description="Product title" />
 
-                <field name="pano_video" type="list" default="0"
-                       label="Is video?" description="" >
-                    <option value="1">JYES</option>
-                    <option value="0">JNO</option>
-                </field>
+                <field name="pano_video" type="text" default="0"
+                       label="Price" description="" />
+
 
                 <field name="pano_settings" type="textarea"
-                       label="Settings" description="Define autoload, autorotate, etc" width="100" />
+                       label="Description" description="A brief description" width="100" />
 
                 <field name="pano_preview" type="media" directory=""
-                       label="Preview image" description="Image to show before loading"/>
+                       label="Photo" description="A photo of the product"/>
 
                 <field name="pano_media" type="media" directory=""
-                       label="Media" description="The panorama media"/>
+                       label="Media" description="Video of product or service"/>
 
             </fieldset>
         </field>
